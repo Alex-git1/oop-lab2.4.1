@@ -23,9 +23,9 @@ public:
     int getElement(int index) const;            
     void setElement(int index, int value);      
 
-    Vector operator+(const Vector& other) const; 
-    bool operator==(const Vector& other) const; 
-    bool operator!=(const Vector& other) const; 
+    friend Vector operator+(const Vector& l, const Vector& r);
+    friend bool operator==(const Vector& v1, const Vector& v2);
+    friend bool operator!=(const Vector& v1, const Vector& v2);
     double norm() const;                        
 
     Vector& operator=(const Vector& other);     

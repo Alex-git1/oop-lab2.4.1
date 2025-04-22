@@ -82,28 +82,28 @@ void Vector::setElement(int index, int value) {
     }
 }
 
-Vector Vector::operator+(const Vector& other) const {
-    if (size != other.size) {
+Vector operator+(const Vector& l, const Vector& r) {
+    if (l.size != r.size) {
         cerr << "Error: vectors aren't equal!" << endl;
         return Vector();
     }
-    Vector result(size);
-    for (int i = 0; i < size; ++i) {
-        result.elements[i] = elements[i] + other.elements[i];
+    Vector result(l.size);
+    for (int i = 0; i < l.size; ++i) {
+        result.elements[i] = l.elements[i] + r.elements[i];
     }
     return result;
 }
 
-bool Vector::operator==(const Vector& other) const {
-    if (size != other.size) return false;
-    for (int i = 0; i < size; ++i) {
-        if (elements[i] != other.elements[i]) return false;
+bool operator==(const Vector& v1, const Vector& v2) {
+    if (v1.size != v2.size) return false;
+    for (int i = 0; i < v1.size; ++i) {
+        if (v1.elements[i] != v2.elements[i]) return false;
     }
     return true;
 }
 
-bool Vector::operator!=(const Vector& other) const {
-    return !(*this == other);
+bool operator!=(const Vector& v1, const Vector& v2) {
+    return !(v1 == v2);
 }
 
 double Vector::norm() const {
